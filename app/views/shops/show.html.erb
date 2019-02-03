@@ -5,9 +5,77 @@
 </h1>
 
 <p>Add a shelf? </p>
+<%= form_for([@shop, @shop.shelves.build]) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <div class="form-buttons">
+      <%= f.submit("Create Shelf") %>
+    </div>
+<% end %>
+
 <p>Add a candy? </p>
+<%= form_for([@shop, @shop.candies.build]) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <div class="form-buttons">
+      <%= f.submit("Create Candy") %>
+    </div>
+<% end %>
 
 <h3>Unshelved Candies </h3>
 
+	<% @unshelved_candies.each do |candy| %>
+	    <li> <%= candy.id %> <%= candy.name %> </li>
+
+	    <!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= candy.id %>">
+		  Move
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal<%= candy.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Select a shelf</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      
+		      <div class="modal-body">
+		          <%= candy.id %>
+		           <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
+	                        <%= hidden_field_tag 'selected', true  %>
+	                       
+	                        <% @shelves.each do |shelf| %>
+	                       		 <%= f.radio_button(:shelf_id, shelf.id)%> <%= shelf.name %><br />
+	                        <% end %>
+	                        <%= f.submit("[X]") %>
+	               <% end %> 
+		          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div>
+	<% end %>
+
 
 <h3>Shelved Candies </h3>
+<% @shelves.each do |shelf| %>
+   <% if shelf.name %>
+     <%= shelf.name %> 
+     <%= form_for(shelf, :url => shop_shelf_path(:id => shelf.id, :shop_id => @shop.id), :method => 'delete') do |f| %>
+                <%= f.submit("[Remove shelf]") %>
+      <% end %> 
+
+	     <ul>
+		     <% shelf.candies.each do |candy| %>
+	             <li> <%= candy.name %>  </li>
+	             <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
+	                        <%= hidden_field_tag 'selected', false  %>
+	                        <%= f.submit("[X]") %>
+	              <% end %>  
+		     <% end %>
+	     </ul>
+     <% end %>
+<% end %>

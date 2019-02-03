@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
     # URL Helper: shops_path
     def index
     	# Find all shops
-        @shops = Shop.all
+        @shops = Shop.newest_first
         @shop_new = Shop.new
     end
 
@@ -14,10 +14,12 @@ class ShopsController < ApplicationController
     # URL Helper: shops_path(:id)
     def show
        @shop = Shop.find(params[:id])
+       @shelves = @shop.shelves
+       @unshelved_candies = @shop.candies.unshelved_candies
     end
 
     def create
-	    @shops = Shop.all
+	    @shops = Shop.newest_first
       @shop_new = Shop.new(shop_params)
       if @shop_new.save
          redirect_to(shop_path(@shop_new))

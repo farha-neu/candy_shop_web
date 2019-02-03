@@ -1,1 +1,17 @@
-Show all shops
+<% @page_title = "Welcome to Candy Shop" %> 
+<%= form_for(@shop_new) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <div class="form-buttons">
+      <%= f.submit("Create Shop") %>
+    </div>
+<% end %>
+
+
+<% if @shops.size == 0 %>
+    <p> No shops </p>
+<% else %>
+   <% @shops.each do |shop| %>
+	    <p><%= link_to(shop.name, shop_path(shop.id), :class => 'action show') %></p>
+	<% end %>
+<% end %>
+

@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
     # GET /shops/:id
     # URL Helper: shops_path(:id)
     def show
+      
        @shop = Shop.find(params[:id])
        @shelves = @shop.shelves
        @unshelved_candies = @shop.candies.unshelved_candies

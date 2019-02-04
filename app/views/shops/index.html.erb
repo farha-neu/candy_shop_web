@@ -1,18 +1,30 @@
 <% @page_title = "Welcome to Candy Shop" %> 
 
+
+<div class="header text-center">
+   Welcome to Candy Shop
+</div>
+
 <%= form_for(@shop_new) do |f| %>
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-    <div class="form-buttons">
-      <%= f.submit("Create Shop") %>
-    </div>
+<div class="form text-center mt-3">
+        <%= render(:partial => 'form', :locals => {:f => f}) %>
+</div>
 <% end %>
 
 
-<% if @shops.size == 0 %>
-    <p> No shops </p>
-<% else %>
-    <% @shops.each do |shop| %>
-	    <p><%= link_to(shop.name, shop_path(shop.id), :class => 'action show') %></p>
-	<% end %>
-<% end %>
+<div class="sub-header text-center mt-4">
+    Visit Shops
+</div>
 
+<div class="row shop-names">
+    <% if @shops.size == 0 %>
+        <div class="col-md-12"> No shops</p>
+    <% else %>
+        <% @shops.each do |shop| %>
+            <div class="col-lg-2 col-md-4 col-12 mt-2 mb-2 text-md-left text-center">
+                    <img src="assets/candy.png" class="shop-img">
+                    <%= link_to(shop.name, shop_path(shop.id), :class => 'shop-name') %>
+            </div> 
+        <% end %>
+    <% end %>
+<div>

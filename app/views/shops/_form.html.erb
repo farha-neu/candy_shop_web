@@ -1,14 +1,9 @@
+<%= f.text_field(:name,
+                 :placeholder=> "Enter the name of shop........",
+                 :class=>"form-control form-control-lg shop-input")%>
 <% if f.object.errors.any? %>
-      <ul>
-        <% f.object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <% f.object.errors.full_messages.each do |message| %>
+    <span class="error-msg"><%= message %></span>    
+  <% end %>
 <% end %>
-
-<table summary="Subject form fields">
-  <tr>
-    <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
-  </tr>
-</table>
+<%= f.submit("Create Shop",:class=>"btn btn-primary btn-custom btn-lg mt-3" ) %>

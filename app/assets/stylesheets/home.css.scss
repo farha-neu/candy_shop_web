@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Francois+One');
+body, html{
+    margin:0;
+    padding:0;
+    background:azure;
+    background-image:url("shop.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 60%; 
+    background-size: 500px;
+    font-family: 'Poppins', sans-serif;
+    color:black;
+}
+
+.header, .sub-header{
+    font-family: 'Francois One', sans-serif;
+  
+    color: steelblue;
+}
+
+.header{
+    font-size: 45px;
+    margin-top:5%;
+}
+
+.sub-header{
+    font-size: 30px;
+    color: black;
+}
+
+
+.shop-input{
+    text-align: center;
+}
+
+.shop-input[type="text"] {
+    height: 60px;
+    border:2px solid steelblue;
+}
+
+.shop-input::placeholder { /* Most modern browsers support this now. */
+    color: gray !important;
+}
+
+.form{
+    max-width:500px;
+    margin: 0 auto;
+    padding:30px;
+}
+
+.btn-custom{
+    background: steelblue;
+    border:transparent;
+}
+
+.shop-names{
+    font-size:20px;
+    border: 2px solid powderblue;
+    background: rgba(176,224,230,0.7);
+    border-radius:5px;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-top:10px;
+    font-weight: bold;
+}
+
+.shop-img{
+    height:20px;
+    position:relative;
+    top:-2px;
+    right:-5px;
+}
+
+.error-msg{
+    display: block;
+    font-size: 15px;
+    color: #bb0000;
+}
+
+.shop-name{
+    color:darkblue;
+}
+
+.shop-name:hover{
+    text-decoration: none;
+}

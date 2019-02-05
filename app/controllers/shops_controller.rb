@@ -13,14 +13,18 @@ class ShopsController < ApplicationController
     # GET /shops/:id
     # URL Helper: shops_path(:id)
     def show
-      
        @shop = Shop.find(params[:id])
-       @shelves = @shop.shelves
        @unshelved_candies = @shop.candies.unshelved_candies
+       puts @shop.shelves
+       puts "********************************************************"
+       @shop.candies.each do |candy|
+         puts "1"
+         puts candy.name
+       end
     end
 
     def create
-	    @shops = Shop.newest_first
+	   @shops = Shop.newest_first
       @shop_new = Shop.new(shop_params)
       if @shop_new.save
          redirect_to(shop_path(@shop_new))

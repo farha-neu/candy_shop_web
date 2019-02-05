@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 @import url('https://fonts.googleapis.com/css?family=Francois+One');
 body, html{
     margin:0;
@@ -9,11 +9,11 @@ body, html{
     background-attachment: fixed;
     background-position: 50% 60%; 
     background-size: 500px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     color:black;
 }
 
-.header, .sub-header{
+.header, .sub-header, .back, .sub-header2{
     font-family: 'Francois One', sans-serif;
   
     color: steelblue;
@@ -21,7 +21,19 @@ body, html{
 
 .header{
     font-size: 45px;
-    margin-top:5%;
+   
+}
+
+.back{
+    font-size: 25px;
+}
+
+.back a{
+    color: navy;
+}
+.back a:hover{
+    color:steelblue;
+    text-decoration: none;
 }
 
 .sub-header{
@@ -30,8 +42,9 @@ body, html{
 }
 
 
-.shop-input{
+.shop-input, .custom-input{
     text-align: center;
+    font-size:22px;
 }
 
 .shop-input[type="text"] {
@@ -39,8 +52,9 @@ body, html{
     border:2px solid steelblue;
 }
 
-.shop-input::placeholder { /* Most modern browsers support this now. */
+.shop-input::placeholder,.custom-input::placeholder { /* Most modern browsers support this now. */
     color: gray !important;
+    font-size:20px;
 }
 
 .form{
@@ -55,7 +69,7 @@ body, html{
 }
 
 .shop-names{
-    font-size:20px;
+    font-size:23px;
     border: 2px solid powderblue;
     background: rgba(176,224,230,0.7);
     border-radius:5px;
@@ -84,4 +98,69 @@ body, html{
 
 .shop-name:hover{
     text-decoration: none;
+}
+
+.custom-input{
+    height:50px;
+    border:2px solid steelblue;
+}
+
+.btn-custom-sc{
+    height:50px;
+    width:50px;
+}
+
+
+
+.icon{
+    font-size: 30px
+}
+
+
+.shelved .candies, .unshelved .candies{
+    font-size:22px;
+}
+
+.sub-header2{
+    font-size: 24px;
+    color:black;
+}
+
+.candy-div{
+    border-bottom: 4px solid brown;
+}
+
+.shelf-name{
+    border: 4px solid brown;
+    background:powderblue;
+    word-wrap: break-word;
+    font-weight: bold;
+}
+
+.candy{
+    background: palegreen;
+    padding:5px 30px;
+    border-radius: 15px;
+    border:2px solid green;
+    display: inline-block;
+    margin:6px 2px;
+}
+
+.candy:hover{
+    cursor: pointer;
+    background: mediumseagreen;
+}
+
+.cross-icon{
+    font-size:30px;
+    color: navy;
+}
+
+.btn-link:hover{
+    color:steelblue !important;
+}
+
+.msg{
+    text-decoration: none;
+    font-size: 18px;
 }

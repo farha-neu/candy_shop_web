@@ -5,4 +5,5 @@ class Candy < ApplicationRecord
 
     scope :unshelved_candies, lambda { where(:shelved => false) }
     
+    validates_presence_of :name
 end

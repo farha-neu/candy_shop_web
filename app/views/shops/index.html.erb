@@ -1,13 +1,16 @@
 <% @page_title = "Welcome to Candy Shop" %> 
 
 
-<div class="header text-center">
+<div class="header text-center mt-5">
    Welcome to Candy Shop
 </div>
 
 <%= form_for(@shop_new) do |f| %>
 <div class="form text-center mt-3">
-        <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <%= f.text_field(:name, :placeholder=> "Enter the name of shop........",
+                     :class=>"form-control form-control-lg shop-input")%>
+    <%= render(:partial => 'validation', :locals => {:f => f}) %>
+    <%= f.submit("Create Shop",:class=>"btn btn-primary btn-custom btn-lg mt-3" ) %>
 </div>
 <% end %>
 
@@ -18,11 +21,11 @@
 
 <div class="row shop-names">
     <% if @shops.size == 0 %>
-        <div class="col-md-12"> No shops</p>
+        <div class="col-md-12 text-center"> No shops created</p>
     <% else %>
         <% @shops.each do |shop| %>
-            <div class="col-lg-2 col-md-4 col-12 mt-2 mb-2 text-md-left text-center">
-                    <img src="assets/candy.png" class="shop-img">
+            <div class="col-lg-3 col-md-4 col-12 mt-2 m-2 pl-5 pr-5 text-md-left text-center">
+                    
                     <%= link_to(shop.name, shop_path(shop.id), :class => 'shop-name') %>
             </div> 
         <% end %>

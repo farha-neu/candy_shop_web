@@ -10,17 +10,16 @@
 </div>
 
 
-
 <div class="row mt-3">
     <div class="col-md-6 text-md-left text-center">
-        <%= form_for([@shop, @shop.shelves.build]) do |f| %>
+        <%= form_for([@shop, @shelf]) do |f| %>
             <%= render(:partial => 'form', 
                        :locals => {:f => f, :header => "Add a Shelf", :placeholder => "Enter a shelf name"}) %>
         <% end %>
     </div>
 
     <div class="col-md-6 text-md-left text-center">
-        <%= form_for([@shop, @shop.candies.build]) do |f| %>
+        <%= form_for([@shop, @candy]) do |f| %>
             <%= render(:partial => 'form',
                        :locals => {:f => f, :header => "Add a Candy", :placeholder => "Enter a candy name"}) %>
         <% end %>
@@ -55,7 +54,7 @@
                               <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
                                     <div class="modal-body">
                                             <%= hidden_field_tag 'move_to_shelf', "1"  %>
-                                            <%= f.select(:shelf_id, @shop.shelves.collect { |shelf| [shelf.name, shelf.id]}) %>
+                                            <%= f.select(:shelf_id, @shop.shelves.collect { |shelf| [shelf.name, shelf.id] }) %>
                                     </div>      
                                     <div class="modal-footer">
                                             <%= f.submit("Confirm",:class=>"btn btn-primary btn-custom" ) %>
@@ -104,15 +103,14 @@
                                     </div>
                                     <% else %>
                                         <div class="col-md-8 candy-div">
-                                          <% for candy in @shelf.candies %>
-                                              <span class="candy candy-unshelved" data-name=<%= candy.name %>>
-                                                    <%= candy.name %>
-                                                    <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
-                                                        <%= hidden_field_tag 'move_to_shelf', "0"  %>
-                                                        <%= f.submit("[X]") %>
-                                              <% end %>  
-                                              </span>
-                                          <% end %>
+                                          <% for candy in shelf.candies %>
+                                          <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
+                                            <%= hidden_field_tag 'move_to_shelf', "0"  %>  
+                                            <%= button_tag( :class => "candy candy-unshelved") do %>
+                                                <%= candy.name %>
+                                            <% end %>
+                                           <% end %>
+                                          <% end %> 
                                         </div>
                                     <% end %>
                                 </div>
@@ -124,6 +122,4 @@
 </div>
 
 
-<% @shop.candies.each do |candy| %>
-          1. <%= candy.name %>
-    <% end %>
+

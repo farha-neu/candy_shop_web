@@ -14,13 +14,9 @@ class ShopsController < ApplicationController
     # URL Helper: shops_path(:id)
     def show
        @shop = Shop.find(params[:id])
+       @candy = Candy.new
+       @shelf = Shelf.new
        @unshelved_candies = @shop.candies.unshelved_candies
-       puts @shop.shelves
-       puts "********************************************************"
-       @shop.candies.each do |candy|
-         puts "1"
-         puts candy.name
-       end
     end
 
     def create

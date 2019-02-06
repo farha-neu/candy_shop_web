@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-   url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   # database: candy_shop_web_production
   # username: candy_shop_web
   # password: <%= ENV['CANDY_SHOP_WEB_DATABASE_PASSWORD'] %>

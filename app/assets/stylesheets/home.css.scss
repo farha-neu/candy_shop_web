@@ -139,13 +139,18 @@ body, html{
 
 .candy{
     background: palegreen;
-    padding:5px 30px;
+    padding:5px;
     border-radius: 15px;
     border:2px solid green;
-    display: inline-block;
+    display: inline-block !important;
     margin:6px 2px;
+    font-size: 16px;
+    min-width:50px;
 }
 
+.edit_candy{
+    display: inline;
+}
 .candy:hover{
     cursor: pointer;
     background: mediumseagreen;

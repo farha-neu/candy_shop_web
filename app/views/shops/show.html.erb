@@ -51,16 +51,28 @@
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
+                              <% if @shop.shelves.length == 0 %>
+                                    <div class="modal-body">
+                                       No shelves available
+                                   </div> 
+                                   <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                             <% else %>
                               <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
                                     <div class="modal-body">
                                             <%= hidden_field_tag 'move_to_shelf', "1"  %>
-                                            <%= f.select(:shelf_id, @shop.shelves.collect { |shelf| [shelf.name, shelf.id] }) %>
+                                            Choose a shelf:
+                                            <%= f.select(:shelf_id,
+                                                         @shop.shelves.collect { |shelf| [shelf.name, shelf.id] },
+                                                        { :class => "form-control"}) %>
                                     </div>      
                                     <div class="modal-footer">
                                             <%= f.submit("Confirm",:class=>"btn btn-primary btn-custom" ) %>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
-                              <% end %> 
+                                <% end %> 
+                              <% end %>
                             </div>
                           </div>
                         </div>
@@ -89,7 +101,6 @@
                                             :data => {:confirm => "Are you sure you want to delete the shelf?"},
                                             :method => 'delete') do |f| %>
                                                 <%# shelf.id %>
-                                                
                                                 <%= shelf.name %>
                                                 <%= button_tag( :class => "btn btn-link") do %>
                                                 <i class="fas fa-times-circle cross-icon"></i>
@@ -104,11 +115,13 @@
                                     <% else %>
                                         <div class="col-md-8 candy-div">
                                           <% for candy in shelf.candies %>
-                                          <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch') do |f| %>
+                                          <%= form_for(candy, :url => shop_candy_path(candy, :shop_id => @shop.id), :method => 'patch',
+                                                      :data => {:confirm => "Are you sure you want to remove it from shelf?"}) do |f| %>
                                             <%= hidden_field_tag 'move_to_shelf', "0"  %>  
                                             <%= button_tag( :class => "candy candy-unshelved") do %>
                                                 <%= candy.name %>
                                             <% end %>
+                                            
                                            <% end %>
                                           <% end %> 
                                         </div>
@@ -120,6 +133,7 @@
                     <% end %>   
        </div>
 </div>
+
 
 
 

@@ -15,8 +15,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.0.4'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'duktape'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -43,6 +41,8 @@ group :development, :test do
 end
 
 group :development do
+  # See https://github.com/rails/execjs#readme for more supported runtimes
+  gem 'duktape'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end

@@ -25,7 +25,7 @@
     <% else %>
         <% @shops.each do |shop| %>
             <div class="col-lg-3 col-md-4 col-12 mt-2 m-2 pl-5 pr-5 text-md-left text-center">
-                    
+                    <img src="assets/sweet.png" />
                     <%= link_to(shop.name, shop_path(shop.id), :class => 'shop-name') %>
             </div> 
         <% end %>

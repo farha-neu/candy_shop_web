@@ -39,9 +39,9 @@
                 <% else %>
                 <div class="col-md-12 candies mt-3 text-center">
                     <% @unshelved_candies.each do |candy| %>
-                        <span class="candy" data-toggle="modal" data-target="#exampleModal<%= candy.id %>">
+                        <a href="#" class="candy" data-toggle="modal" data-target="#exampleModal<%= candy.id %>">
                               <%= candy.name %>
-                        </span>
+                        </a>
                         <div class="modal fade" id="exampleModal<%= candy.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">

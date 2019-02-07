@@ -146,7 +146,9 @@ body, html{
     margin:6px 2px;
     font-size: 16px;
     min-width:50px;
+    color:black;
 }
+
 
 .edit_candy{
     display: inline;
@@ -154,6 +156,8 @@ body, html{
 .candy:hover{
     cursor: pointer;
     background: mediumseagreen;
+    text-decoration: none;
+    color:black;
 }
 
 .cross-icon{

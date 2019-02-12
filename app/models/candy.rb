@@ -1,5 +1,6 @@
 class Candy < ApplicationRecord
     
+    # No validation for presence of shop and shelf
     belongs_to :shop, { :optional => true }
     belongs_to :shelf, { :optional => true }
 

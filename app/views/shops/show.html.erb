@@ -97,7 +97,7 @@
                                     <div class="col-md-4 shelf-name text-center pt-3 pb-3">
                                      
                                         <%= form_for(shelf,
-                                            :url => shop_shelf_path(:id => shelf.id, :shop_id => @shop.id),
+                                            :url => shop_shelf_path(shelf, :shop_id => @shop.id),
                                             :data => {:confirm => "Are you sure you want to delete the shelf?"},
                                             :method => 'delete') do |f| %>
                                                 <%# shelf.id %>

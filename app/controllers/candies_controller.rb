@@ -11,12 +11,12 @@ class CandiesController < ApplicationController
 def update
      @shop = Shop.find(params[:shop_id])
      @candy = Candy.find(params[:id])
+     #moves a candy to a selected shelf
      if(params[:move_to_shelf]=="1")
          shelf = Shelf.find(params[:candy][:shelf_id])
+         #passing hash of new attributes that we want on candy
          @candy.update_attributes(:shelved => true, :shelf => shelf)           
     else
-         @shelf = @candy.shelf
-         @shelf.candies.delete(@candy)
          @candy.update_attributes(:shelved => false)
     end
     redirect_to(shop_path(@shop))    
